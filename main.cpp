@@ -7,7 +7,6 @@
 
 #define BUFSIZE      1024
 #define AUX_APPENDIX "_core"
-#define BIN_APPENDIX ".exe"
 
 int main(int argc, char **argv) {
     STARTUPINFO           start_info = {sizeof(start_info)};
@@ -19,7 +18,7 @@ int main(int argc, char **argv) {
     dll_name = dll_name + "_d";
 #endif
     dll_name = dll_name + ".dll";
-    exe_name = exe_name + BIN_APPENDIX;
+    exe_name = std::string(p.filename().string());
 
     // Format passed down to loader to pass to process.
     std::stringstream args;
