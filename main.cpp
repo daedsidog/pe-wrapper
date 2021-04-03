@@ -27,8 +27,6 @@ int main(int argc, char **argv) {
     for (int i = 1; i < argc; ++i) {
         args << " " << argv[i];
     }
-    std::cout << args.str() << std::endl;
-    system("pause");
 
     // Launch the target process.
     // &std::string[0] is equivalent to char*.
