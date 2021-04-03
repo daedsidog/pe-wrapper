@@ -7,6 +7,7 @@
 
 #define BUFSIZE      1024
 #define AUX_APPENDIX "_core"
+#define DEBUG_APPENDIX "_d"
 
 int main(int argc, char **argv) {
     STARTUPINFO           start_info = {sizeof(start_info)};
@@ -15,10 +16,10 @@ int main(int argc, char **argv) {
     std::string exe_name = std::string(p.stem().string()) + AUX_APPENDIX;
     std::string dll_name = exe_name;
 #ifdef DEBUG
-    dll_name = dll_name + "_d";
+    dll_name = dll_name + DEBUG_APPENDIX;
 #endif
     dll_name = dll_name + ".dll";
-    exe_name = std::string(p.filename().string());
+    exe_name = exe_name + ".exe";
 
     // Format passed down to loader to pass to process.
     std::stringstream args;
@@ -27,6 +28,8 @@ int main(int argc, char **argv) {
         args << " " << argv[i];
     }
 
+    std::cout << args.str() << std::endl;
+    system("pause");
     // Launch the target process.
     // &std::string[0] is equivalent to char*.
     if (CreateProcess(nullptr, &(args.str())[0], nullptr, nullptr, FALSE,
