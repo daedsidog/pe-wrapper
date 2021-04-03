@@ -28,8 +28,6 @@ int main(int argc, char **argv) {
         args << " " << argv[i];
     }
 
-    std::cout << args.str() << std::endl;
-    system("pause");
     // Launch the target process.
     // &std::string[0] is equivalent to char*.
     if (CreateProcess(nullptr, &(args.str())[0], nullptr, nullptr, FALSE,
