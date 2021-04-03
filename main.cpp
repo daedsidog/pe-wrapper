@@ -23,10 +23,12 @@ int main(int argc, char **argv) {
 
     // Format passed down to loader to pass to process.
     std::stringstream args;
-    args << exe_name << " " << dll_name << " -args";
+    args << exe_name;
     for (int i = 1; i < argc; ++i) {
         args << " " << argv[i];
     }
+    std::cout << args.str() << std::endl;
+    system("pause");
 
     // Launch the target process.
     // &std::string[0] is equivalent to char*.
